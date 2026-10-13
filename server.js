@@ -22,13 +22,19 @@ const MIME_TYPES = {
     '.txt': 'text/plain; charset=utf-8',
     '.woff2': 'font/woff2',
     '.woff': 'font/woff',
-    '.ttf': 'font/ttf'
+    '.ttf': 'font/ttf',
+    '.mp4': 'video/mp4',
+    '.mp3': 'audio/mpeg',
+    '.wav': 'audio/wav',
+    '.glb': 'model/gltf-binary',
+    '.gltf': 'model/gltf+json'
 };
 
 const server = http.createServer((req, res) => {
     // CORS headers
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Range, Content-Type');
 
     if (req.method === 'OPTIONS') {
         res.writeHead(204);
@@ -61,9 +67,28 @@ const server = http.createServer((req, res) => {
         const ext = path.extname(filePath).toLowerCase();
         const contentType = MIME_TYPES[ext] || 'application/octet-stream';
 
+        // Support video byte-range streaming for Safari / Chrome
+        const range = req.headers.range;
+        if (range && (ext === '.mp4' || ext === '.mp3')) {
+            const parts = range.replace(/bytes=/, "").split("-");
+            const start = parseInt(parts[0], 10);
+            const end = parts[1] ? parseInt(parts[1], 10) : stats.size - 1;
+            const chunksize = (end - start) + 1;
+            const file = fs.createReadStream(filePath, { start, end });
+            res.writeHead(206, {
+                'Content-Range': `bytes ${start}-${end}/${stats.size}`,
+                'Accept-Ranges': 'bytes',
+                'Content-Length': chunksize,
+                'Content-Type': contentType,
+            });
+            file.pipe(res);
+            return;
+        }
+
         res.writeHead(200, {
             'Content-Type': contentType,
             'Content-Length': stats.size,
+            'Accept-Ranges': 'bytes',
             'Cache-Control': 'no-cache'
         });
 

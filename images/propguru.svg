@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/images/SClogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Sean's Portfolio</title>
+    <meta name="description" content="Sean Currlin — Software Engineer in Charlotte, NC. Portfolio featuring full-stack projects, data analysis, and interactive 3D experiences built with React, Three.js, and more." />
+    
+    <!-- OpenGraph tags (Facebook, LinkedIn, iMessage, Android, etc.) -->
+    <meta property="og:title" content="Sean's Portfolio" />
+    <meta property="og:description" content="Welcome to my portfolio!" />
+    <meta property="og:url" content="https://seancurrlin.com/" />
+    <meta property="og:site_name" content="Sean's Portfolio" />
+    <meta property="og:image" content="https://seancurrlin.com/images/SClogo-og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+    
+    <!-- Twitter tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Sean's Portfolio" />
+    <meta name="twitter:description" content="Welcome to my portfolio!" />
+    <meta name="twitter:image" content="https://seancurrlin.com/images/SClogo-og.png" />
+
+    <!-- Preload the intro face. crossorigin is required for fonts. -->
+    <link rel="preload" href="/fonts/mona-sans-latin-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/images/wave.svg" as="image" type="image/svg+xml" />
+
+    <script>
+      (() => {
+        const root = document.documentElement;
+        const shortViewportQuery = "(max-height: 499px)";
+        const mobileLandscapeQuery = "(hover: none) and (pointer: coarse) and (orientation: landscape)";
+        const memeDelayMs = 500;
+        const releaseHoldMs = 500;
+        let blackoutHoldUntil = 0;
+        let blackoutTimer = 0;
+        let memeTimer = 0;
+        let wasBlackoutTarget = false;
+
+        const isSecretRoute = () => location.pathname.startsWith("/secret");
+        const isMainRoute = () => !isSecretRoute();
+        const isBlackoutRoute = () => isMainRoute() || isSecretRoute();
+        const matchesQuery = (query) =>
+          typeof window.matchMedia === "function" && window.matchMedia(query).matches;
+        const shouldBlackout = () =>
+          isBlackoutRoute() && (matchesQuery(shortViewportQuery) || matchesQuery(mobileLandscapeQuery));
+        const activeBlackoutClass = () =>
+          isSecretRoute() ? "secret-viewport-blackout-active" : "main-viewport-blackout-active";
+        const clearBlackoutClasses = () => {
+          root.classList.remove("main-viewport-blackout-active", "secret-viewport-blackout-active");
+        };
+        const activeMemeClass = () =>
+          isSecretRoute() ? "secret-viewport-blackout-meme-active" : "main-viewport-blackout-meme-active";
+        const clearMemeClasses = () => {
+          root.classList.remove("main-viewport-blackout-meme-active", "secret-viewport-blackout-meme-active");
+        };
+        const clearMemeTimer = () => {
+          window.clearTimeout(memeTimer);
+          memeTimer = 0;
+        };
+        const hideMeme = () => {
+          clearMemeClasses();
+        };
+        const scheduleMeme = () => {
+          clearMemeTimer();
+          hideMeme();
+          memeTimer = window.setTimeout(() => {
+            memeTimer = 0;
+            if (shouldBlackout()) {
+              root.classList.add(activeMemeClass());
+            }
+          }, memeDelayMs);
+        };
+        const scheduleBlackoutRelease = () => {
+          window.clearTimeout(blackoutTimer);
+          const remainingHold = blackoutHoldUntil - Date.now();
+
+          if (remainingHold > 0) {
+            blackoutTimer = window.setTimeout(updateBlackout, remainingHold);
+          } else {
+            blackoutTimer = 0;
+          }
+        };
+        const updateBlackout = ({ extendHoldOnClear = false } = {}) => {
+          const targetIsActive = shouldBlackout();
+          const holdIsActive = Date.now() < blackoutHoldUntil;
+
+          if (targetIsActive) {
+            window.clearTimeout(blackoutTimer);
+            blackoutTimer = 0;
+            clearBlackoutClasses();
+            root.classList.add(activeBlackoutClass());
+
+            if (!wasBlackoutTarget) {
+              scheduleMeme();
+            }
+          } else {
+            if (isSecretRoute()) {
+              blackoutHoldUntil = 0;
+            } else if (wasBlackoutTarget || holdIsActive || extendHoldOnClear) {
+              blackoutHoldUntil = Date.now() + releaseHoldMs;
+            }
+
+            clearMemeTimer();
+            hideMeme();
+
+            const releaseIsActive = isBlackoutRoute() && Date.now() < blackoutHoldUntil;
+            clearBlackoutClasses();
+            if (releaseIsActive) {
+              root.classList.add(activeBlackoutClass());
+            }
+            scheduleBlackoutRelease();
+          }
+
+          wasBlackoutTarget = targetIsActive;
+        };
+        const holdBlackout = () => {
+          updateBlackout({ extendHoldOnClear: true });
+          window.requestAnimationFrame(updateBlackout);
+        };
+        const watchMedia = (query) => {
+          if (typeof window.matchMedia !== "function") return;
+
+          const media = window.matchMedia(query);
+          const onChange = () => updateBlackout();
+          if (typeof media.addEventListener === "function") {
+            media.addEventListener("change", onChange);
+          } else if (typeof media.addListener === "function") {
+            media.addListener(onChange);
+          }
+        };
+
+        if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+        window.scrollTo(0, 0);
+        root.classList.toggle("main-route-active", isMainRoute());
+        updateBlackout();
+        watchMedia(shortViewportQuery);
+        watchMedia(mobileLandscapeQuery);
+        window.addEventListener("orientationchange", holdBlackout, { passive: true });
+        window.addEventListener("resize", updateBlackout, { passive: true });
+        window.visualViewport?.addEventListener("resize", updateBlackout, { passive: true });
+        window.screen?.orientation?.addEventListener("change", holdBlackout);
+      })();
+    </script>
+    <style>
+      .main-viewport-blackout {
+        position: fixed;
+        inset: 0;
+        z-index: 2147483647;
+        background: #000;
+        display: grid;
+        place-items: center;
+        touch-action: none;
+        user-select: none;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: none;
+      }
+
+      .secret-viewport-blackout {
+        position: fixed;
+        inset: -100vmax;
+        z-index: 2147483647;
+        background: #000;
+        display: grid;
+        place-items: center;
+        touch-action: none;
+        user-select: none;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: none;
+      }
+
+      .main-viewport-blackout-meme,
+      .secret-viewport-blackout-meme {
+        max-width: min(80vw, 420px);
+        max-height: 75dvh;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: none;
+        user-select: none;
+      }
+
+      html.main-viewport-blackout-active,
+      html.main-viewport-blackout-active body,
+      html.secret-viewport-blackout-active,
+      html.secret-viewport-blackout-active body {
+        background: #000 !important;
+      }
+
+      html.main-viewport-blackout-active #root,
+      html.secret-viewport-blackout-active #root {
+        visibility: hidden;
+      }
+
+      html.main-viewport-blackout-active .main-viewport-blackout,
+      html.secret-viewport-blackout-active .secret-viewport-blackout {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+      }
+
+      html.main-route-active:not(.secret-portfolio-active).main-viewport-blackout-meme-active .main-viewport-blackout-meme {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      html.secret-viewport-blackout-active.secret-viewport-blackout-meme-active .secret-viewport-blackout-meme {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      @media (max-height: 499px), (hover: none) and (pointer: coarse) and (orientation: landscape) {
+        html.main-route-active {
+          background: #000 !important;
+        }
+
+        html.main-route-active body {
+          background: #000 !important;
+        }
+
+        html.main-route-active #root {
+          visibility: hidden;
+        }
+
+        html.main-route-active .main-viewport-blackout {
+          opacity: 1;
+          visibility: visible;
+          pointer-events: auto;
+        }
+      }
+    </style>
+    <script type="module" crossorigin src="/assets/index-BKQ438zO.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/shared-runtime-CpuLl68j.js">
+    <link rel="modulepreload" crossorigin href="/assets/react-vendor-BmHnjH7d.js">
+    <link rel="stylesheet" crossorigin href="/assets/index-CkKvaVXg.css">
+  </head>
+  <body>
+    <div id="root"></div>
+    <div class="main-viewport-blackout" aria-hidden="true">
+      <img class="main-viewport-blackout-meme" data-src="/images/Jim500.jpg" alt="" decoding="async" />
+    </div>
+    <div class="secret-viewport-blackout" aria-hidden="true">
+      <img class="secret-viewport-blackout-meme" data-src="/images/Jim500.jpg" alt="" decoding="async" />
+    </div>
+  </body>
+</html>
