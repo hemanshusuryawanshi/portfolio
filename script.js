@@ -265,11 +265,11 @@ function initHoloIdentityStudio() {
     const photoCounterLbl = document.getElementById('photo-counter-lbl');
 
     const photos = [
-        { src: '/gallery/image-2.webp', title: 'Pune Nightscapes & Light Trails' },
-        { src: '/gallery/image-4.webp', title: 'Heritage Urban Architecture' },
-        { src: '/gallery/image-5.webp', title: 'Misty Monsoon Serenity' },
-        { src: '/gallery/image-7.webp', title: 'Campus Reflection Symmetry' },
-        { src: '/gallery/image-9.webp', title: 'Royal Enfield Café Racer Craft' }
+        { src: 'gallery/image-2.webp', title: 'Pune Nightscapes & Light Trails' },
+        { src: 'gallery/image-4.webp', title: 'Heritage Urban Architecture' },
+        { src: 'gallery/image-5.webp', title: 'Misty Monsoon Serenity' },
+        { src: 'gallery/image-7.webp', title: 'Campus Reflection Symmetry' },
+        { src: 'gallery/image-9.webp', title: 'Royal Enfield Café Racer Craft' }
     ];
     let photoIndex = 0;
 
@@ -322,12 +322,12 @@ function initSpotifyDrawer() {
         {
             title: 'Voyage — Chill Lofi Beats',
             artist: "Hemanshu's Focus Selection",
-            src: '/assets/voyage-DAKl0EEC.mp3'
+            src: 'assets/voyage-DAKl0EEC.mp3'
         },
         {
             title: 'Green Hill Zone — Ambient Lofi',
             artist: 'Retro Chill Beats • Hemanshu',
-            src: '/assets/green-hill-zone-lofi-BLqkUlV_.mp3'
+            src: 'assets/green-hill-zone-lofi-BLqkUlV_.mp3'
         }
     ];
 
@@ -815,7 +815,7 @@ function initBryanTimeline() {
             description: 'Comprehensive coursework covering Machine Learning, Computer Vision, Neural Networks, Distributed Systems, and Serverless Cloud Architectures.',
             media: {
                 type: 'video',
-                src: '/assets/neu-trimmed-BusknyAv.mp4'
+                src: 'assets/neu-trimmed-BusknyAv.mp4'
             },
             stats: [
                 { label: 'Neural & ML', val: '94%' },
@@ -833,7 +833,7 @@ function initBryanTimeline() {
             description: 'Deep engineering in serverless architectures, Docker containerization, AWS ECS Fargate, S3 automated pipelines, DynamoDB & RDS persistence, and CloudWatch telemetry.',
             media: {
                 type: 'video',
-                src: '/assets/imagine-redux-CthsR9LM.mp4'
+                src: 'assets/imagine-redux-CthsR9LM.mp4'
             },
             stats: [
                 { label: 'AWS Services', val: '12+' },
@@ -851,7 +851,7 @@ function initBryanTimeline() {
             description: 'Directing visual identity, workshop media production, hackathon outreach, and developer community evangelism across engineering cohorts.',
             media: {
                 type: 'video',
-                src: '/assets/propcard-compressed-BN0QPArA.mp4'
+                src: 'assets/propcard-compressed-BN0QPArA.mp4'
             },
             stats: [
                 { label: 'Workshops Led', val: '6+' },
@@ -869,7 +869,7 @@ function initBryanTimeline() {
             description: 'Mastered Object-Oriented Design Patterns, Multithreading, Enterprise JDBC, and Multi-tier distributed software architectures.',
             media: {
                 type: 'img',
-                src: '/images/project-distributed.jpg'
+                src: 'images/project-distributed.jpg'
             },
             stats: [
                 { label: 'OOP Patterns', val: 'Design' },
@@ -887,7 +887,7 @@ function initBryanTimeline() {
             description: 'Coursework across Physics, Chemistry, Mathematics, and Computer Science fundamentals, cultivating analytical and algorithmic problem-solving.',
             media: {
                 type: 'img',
-                src: '/gallery/image-4.webp'
+                src: 'gallery/image-4.webp'
             },
             stats: [
                 { label: 'Physics & Math', val: 'Core' },
@@ -905,7 +905,7 @@ function initBryanTimeline() {
             description: 'Graduated with high distinction across Mathematics, Science, and Analytical Computing.',
             media: {
                 type: 'img',
-                src: '/gallery/image-7.webp'
+                src: 'gallery/image-7.webp'
             },
             stats: [
                 { label: 'Mathematics', val: 'High Distinction' },
@@ -923,7 +923,7 @@ function initBryanTimeline() {
             description: 'Deep foundations synthesizing serverless cloud infrastructure on AWS, neural artificial intelligence pipelines, and high-performance front-end interaction.',
             media: {
                 type: 'video',
-                src: '/assets/imagine-redux-CthsR9LM.mp4'
+                src: 'assets/imagine-redux-CthsR9LM.mp4'
             },
             stats: [
                 { label: 'Cloud & AI', val: 'Production' },
