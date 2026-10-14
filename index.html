@@ -6,14 +6,14 @@
     <title>Hemanshu Suryawanshi | Full-Stack Developer & AI Systems Engineer</title>
     
     <!-- SEO & Metadata -->
-    <meta name="description" content="Portfolio of Hemanshu Suryawanshi — Full-Stack Developer & AI Systems Engineer specializing in high-performance web architectures, intelligent agents, and scalable distributed systems.">
-    <meta name="keywords" content="Hemanshu Suryawanshi, Full-Stack Developer, AI Systems Engineer, Three.js, React, Next.js, Python, FastAPI, Machine Learning">
+    <meta name="description" content="Portfolio of Hemanshu Suryawanshi — Full-Stack Developer & AI Systems Engineer specializing in high-performance cloud architectures, intelligent agents, and scalable distributed systems on AWS.">
+    <meta name="keywords" content="Hemanshu Suryawanshi, Full-Stack Developer, AI Systems Engineer, AWS, Python, FastAPI, Docker, Machine Learning, Pune">
     <meta name="author" content="Hemanshu Suryawanshi">
     
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Hemanshu Suryawanshi | Portfolio">
-    <meta property="og:description" content="Shaping Ideas into High-Performance Solutions. Award-winning 3D developer portfolio.">
+    <meta property="og:description" content="Shaping Systems into High-Performance Solutions. Full-Stack Developer & AI Systems Engineer.">
     <meta property="og:image" content="/gallery/og-image.jpg">
     <meta property="og:url" content="https://hemanshusuryawanshi.github.io/portfolio/">
     <meta name="twitter:card" content="summary_large_image">
@@ -45,7 +45,7 @@
                 <span class="letter-ex" style="--letter-index: 7">!</span>
                 <span class="letter-wave" style="--letter-index: 8">👋</span>
             </div>
-            <p class="landing-intro__subtitle">Initializing 3D spatial canvas & audio environment</p>
+            <p class="landing-intro__subtitle">Initializing 3D spatial canvas & Spotify audio hub</p>
             <button id="skip-intro-btn" class="skip-btn" type="button" aria-label="Skip introduction">
                 <span>Skip</span>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
@@ -53,27 +53,24 @@
         </div>
     </section>
 
-    <!-- Left Awwwards Nominee Ribbon -->
-    <aside class="awwwards-ribbon" aria-label="Awwwards recognition">
-        <a href="https://www.awwwards.com/" target="_blank" rel="noopener noreferrer" class="awwwards-link">
-            <span class="awwwards-logo">W.</span>
-            <span class="awwwards-text">Nominee</span>
-        </a>
-    </aside>
-
     <!-- Top Fixed Glass Navigation -->
     <header class="site-header">
         <div class="header-inner">
-            <!-- Brand & Audio Visualizer -->
+            <!-- Brand & Dedicated Spotify Widget Trigger -->
             <div class="header-left">
                 <a href="#hero" class="brand-link">
                     <span class="brand-name">Hemanshu Suryawanshi</span>
                 </a>
-                <button id="sound-toggle-btn" class="audio-equalizer-btn" type="button" aria-label="Toggle background lo-fi music" title="Toggle Lo-Fi Ambient Audio">
-                    <span class="eq-bar bar-1"></span>
-                    <span class="eq-bar bar-2"></span>
-                    <span class="eq-bar bar-3"></span>
-                    <span class="eq-bar bar-4"></span>
+                
+                <!-- Dedicated Spotify Widget Trigger Button (Replaces old radio) -->
+                <button id="spotify-toggle-btn" class="spotify-badge-btn" type="button" aria-label="Open Spotify Playlist Player" title="Hemanshu's Spotify Hub • Click to Listen">
+                    <img src="/images/spotify.svg" alt="Spotify" width="18" height="18" class="spotify-icon">
+                    <span class="spotify-text">Spotify</span>
+                    <span class="spotify-bars" aria-hidden="true">
+                        <span class="s-bar bar-1"></span>
+                        <span class="s-bar bar-2"></span>
+                        <span class="s-bar bar-3"></span>
+                    </span>
                 </button>
             </div>
 
@@ -81,7 +78,8 @@
             <nav class="header-nav" aria-label="Main Navigation">
                 <ul class="nav-list">
                     <li><a href="#work" class="nav-link">Projects</a></li>
-                    <li><a href="#experience" class="nav-link">Experience</a></li>
+                    <li><a href="#education" class="nav-link">Education</a></li>
+                    <li><a href="#gallery" class="nav-link">Gallery</a></li>
                     <li><a href="#contact" class="nav-link">Contact</a></li>
                 </ul>
             </nav>
@@ -99,10 +97,91 @@
         </div>
     </header>
 
+    <!-- Dedicated Spotify Floating Drawer / Widget Modal -->
+    <div id="spotify-drawer" class="spotify-drawer" hidden aria-label="Spotify Player">
+        <div class="spotify-drawer-header">
+            <div class="spotify-title-group">
+                <img src="/images/spotify.svg" alt="Spotify" width="22" height="22">
+                <div>
+                    <span class="spotify-heading">Hemanshu's Spotify Station</span>
+                    <span class="spotify-sub">Curated Coding Beats & Focus Audio</span>
+                </div>
+            </div>
+            <button id="spotify-close-btn" class="spotify-close-btn" aria-label="Close Spotify Drawer">✕</button>
+        </div>
+
+        <!-- Integrated Direct Audio Player (Instant Playback in Browser) -->
+        <div class="direct-audio-player">
+            <audio id="portfolio-audio" preload="metadata">
+                <source src="/assets/voyage-DAKl0EEC.mp3" type="audio/mpeg">
+            </audio>
+            
+            <div class="dap-track-row">
+                <div class="dap-art-wrap">
+                    <img src="/images/spotify.svg" alt="Lofi Beat" class="dap-disc-icon">
+                </div>
+                <div class="dap-info">
+                    <span class="dap-title" id="dap-title">Voyage — Chill Lofi Beats</span>
+                    <span class="dap-artist" id="dap-artist">Hemanshu's Focus Selection</span>
+                </div>
+                <div class="dap-eq-bars" id="dap-eq-bars" aria-hidden="true">
+                    <span class="dap-bar"></span>
+                    <span class="dap-bar"></span>
+                    <span class="dap-bar"></span>
+                    <span class="dap-bar"></span>
+                </div>
+            </div>
+
+            <div class="dap-controls-row">
+                <button id="dap-prev-btn" class="dap-btn-ctrl" type="button" aria-label="Previous Track" title="Previous Track">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="19 20 9 12 19 4 19 20"/><line x1="5" y1="19" x2="5" y2="5" stroke="currentColor" stroke-width="2.5"/></svg>
+                </button>
+                <button id="dap-play-btn" class="dap-btn-play" type="button" aria-label="Play or Pause Song" title="Play / Pause Audio">
+                    <svg id="dap-play-icon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                    <svg id="dap-pause-icon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="display:none;"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+                </button>
+                <button id="dap-next-btn" class="dap-btn-ctrl" type="button" aria-label="Next Track" title="Next Track">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 4 15 12 5 20 5 4"/><line x1="19" y1="5" x2="19" y2="19" stroke="currentColor" stroke-width="2.5"/></svg>
+                </button>
+                <div class="dap-scrubber-group">
+                    <span class="dap-time" id="dap-curr-time">0:00</span>
+                    <input type="range" id="dap-scrubber" class="dap-scrubber" min="0" max="100" value="0" aria-label="Audio scrubber">
+                    <span class="dap-time" id="dap-total-time">--:--</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Embedded Official Spotify Playlist Widget -->
+        <div class="spotify-embed-container">
+            <iframe id="spotify-iframe" 
+                data-testid="embed-iframe"
+                style="border-radius:12px"
+                src="https://open.spotify.com/embed/playlist/5WBhthKJlvp0VicFgsaCy4?utm_source=generator&si=3058ea76f3ad40c1" 
+                width="100%" 
+                height="152" 
+                frameBorder="0" 
+                allowfullscreen="" 
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                loading="lazy">
+            </iframe>
+        </div>
+
+        <!-- Direct Spotify App Link -->
+        <a href="https://open.spotify.com/playlist/5WBhthKJlvp0VicFgsaCy4?si=81a50ca85fdb4d1a" target="_blank" rel="noopener noreferrer" class="spotify-open-app-btn">
+            <img src="/images/spotify.svg" alt="Spotify" width="16" height="16">
+            <span>Open Full Playlist on Spotify App ↗</span>
+        </a>
+        
+        <div class="spotify-drawer-footer">
+            <span class="spotify-status-pill"><span class="pulse-dot"></span> High-Fidelity Audio Ready</span>
+            <span class="spotify-hint">Click play above to listen live while exploring!</span>
+        </div>
+    </div>
+
     <!-- Main Content Container -->
     <main id="main-content">
 
-        <!-- HERO SECTION: Split Screen (Left Copy + Right 3D Room Canvas) -->
+        <!-- HERO SECTION: Split Screen (Left Copy + Right Interactive Stream & Hologram Card) -->
         <section id="hero" class="hero-section">
             <div class="hero-container">
                 <!-- Left Hero Content -->
@@ -110,7 +189,7 @@
                     <h1 class="hero-headline">
                         Shaping 
                         <span class="rotating-word-container">
-                            <span id="rotating-word" class="rotating-word">Ideas</span>
+                            <span id="rotating-word" class="rotating-word">Systems</span>
                         </span>
                         into High-Performance Solutions
                     </h1>
@@ -124,7 +203,7 @@
                         <a href="#work" class="cta-primary-btn" id="see-work-btn">
                             <span>SEE MY WORK</span>
                         </a>
-                        <div class="cta-geometric-icon" aria-hidden="true" title="Spatial WebGL System">
+                        <div class="cta-geometric-icon" aria-hidden="true" title="Spatial WebGL & Neural Architecture">
                             <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8">
                                 <polygon points="12 2 2 8.5 12 15 22 8.5 12 2"></polygon>
                                 <polyline points="2 15.5 12 22 22 15.5"></polyline>
@@ -134,338 +213,789 @@
                     </div>
                 </div>
 
-                <!-- Right 3D Room Canvas Container -->
+                <!-- Right Interactive Developer Stream Studio & Hologram Card -->
                 <div class="hero-canvas-wrapper" id="hero-3d-container">
-                    <canvas id="hero-canvas" class="hero-canvas" aria-label="Interactive 3D developer room"></canvas>
+                    <!-- Background 3D Spatial Canvas -->
+                    <canvas id="hero-canvas" class="hero-canvas" aria-label="Interactive 3D particle nebula"></canvas>
                     <div class="canvas-ambient-glow" aria-hidden="true"></div>
+
+                    <!-- Interactive Holographic Identity Card (Multi-Stream Matrix) -->
+                    <div class="holo-identity-card" id="holo-card">
+                        <div class="holo-card-glare" id="holo-glare"></div>
+                        
+                        <!-- Top Header: Status & Live Location -->
+                        <div class="holo-card-top">
+                            <div class="holo-status-pill">
+                                <span class="holo-pulse-dot"></span>
+                                <span class="holo-status-txt">AI / AWS Cloud Stream</span>
+                            </div>
+                            <span class="holo-badge-loc">📍 Pune, MH 🇮🇳</span>
+                        </div>
+
+                        <!-- Center: Holographic Portrait Presentation -->
+                        <div class="holo-avatar-stage">
+                            <div class="holo-avatar-ring">
+                                <div class="holo-scan-line"></div>
+                                <div class="holo-avatar-inner">
+                                    <!-- Dynamic Portrait Frame -->
+                                    <img src="/gallery/og-image.jpg" id="hero-portrait-img" alt="Hemanshu Suryawanshi" class="holo-portrait-photo" onerror="this.src='/images/p1.png'">
+                                    <div class="holo-portrait-overlay">
+                                        <span class="holo-initials">HS</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="holo-avatar-info">
+                                <h2 class="holo-name">Hemanshu Suryawanshi</h2>
+                                <p class="holo-role-sub">B.Tech AIML • Cloud & ML Architect</p>
+                                <div class="holo-mini-tags">
+                                    <span class="h-tag">AWS Serverless</span>
+                                    <span class="h-tag">Python</span>
+                                    <span class="h-tag">FastAPI</span>
+                                    <span class="h-tag">Docker</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Interactive Stream Mode Selector -->
+                        <div class="holo-stream-selector" role="tablist" aria-label="Identity stream modes">
+                            <button class="stream-btn is-active" data-stream="ai" role="tab" aria-selected="true">
+                                <span>🧠 AI / ML</span>
+                            </button>
+                            <button class="stream-btn" data-stream="cloud" role="tab" aria-selected="false">
+                                <span>☁️ AWS Cloud</span>
+                            </button>
+                            <button class="stream-btn" data-stream="photo" role="tab" aria-selected="false">
+                                <span>📸 Creative Lens</span>
+                            </button>
+                            <button class="stream-btn" data-stream="sports" role="tab" aria-selected="false">
+                                <span>🏏 Cricket</span>
+                            </button>
+                        </div>
+
+                        <!-- Dynamic Stream Content Panel -->
+                        <div class="holo-stream-panel" id="holo-panel">
+                            <!-- Stream 1: AI / ML Core (Default) -->
+                            <div class="stream-content active" id="stream-ai">
+                                <div class="stream-stat-row">
+                                    <div class="stream-stat-box">
+                                        <span class="stat-lbl">Inference Speed</span>
+                                        <span class="stat-val text-cyan">&lt; 50ms</span>
+                                    </div>
+                                    <div class="stream-stat-box">
+                                        <span class="stat-lbl">Model Accuracy</span>
+                                        <span class="stat-val text-green">98.4%</span>
+                                    </div>
+                                </div>
+                                <div class="stream-desc">
+                                    Engineered <strong>CyberGuard</strong> URL classification via Random Forest & FastAPI, with automated AWS Rekognition civic triage.
+                                </div>
+                                <button class="stream-action-btn" id="btn-test-inference" type="button">
+                                    <span class="btn-icon">⚡</span>
+                                    <span>Run Simulated Inference Test</span>
+                                </button>
+                            </div>
+
+                            <!-- Stream 2: AWS Cloud Native -->
+                            <div class="stream-content" id="stream-cloud">
+                                <div class="stream-stat-row">
+                                    <div class="stream-stat-box">
+                                        <span class="stat-lbl">Architecture</span>
+                                        <span class="stat-val text-orange">Serverless & ECS</span>
+                                    </div>
+                                    <div class="stream-stat-box">
+                                        <span class="stat-lbl">AWS Region</span>
+                                        <span class="stat-val">ap-south-1</span>
+                                    </div>
+                                </div>
+                                <div class="stream-desc">
+                                    EventBridge asynchronous orchestration, Lambda image resizing, S3 pipelines, and containerized Docker Fargate workloads.
+                                </div>
+                                <button class="stream-action-btn" id="btn-ping-cloud" type="button">
+                                    <span class="btn-icon">🌐</span>
+                                    <span>Ping AWS Mumbai Hub</span>
+                                </button>
+                            </div>
+
+                            <!-- Stream 3: Creative Lens / Photography -->
+                            <div class="stream-content" id="stream-photo">
+                                <div class="stream-photo-preview">
+                                    <img src="/gallery/image-2.webp" alt="Night street capture by Hemanshu" class="photo-slide-img" id="active-photo-preview">
+                                    <div class="photo-caption-bar">
+                                        <span id="photo-title-lbl">Pune Nightscapes & Light Trails</span>
+                                        <span class="photo-counter" id="photo-counter-lbl">1 / 5</span>
+                                    </div>
+                                </div>
+                                <button class="stream-action-btn" id="btn-next-photo" type="button">
+                                    <span class="btn-icon">📸</span>
+                                    <span>Cycle Next Photograph</span>
+                                </button>
+                            </div>
+
+                            <!-- Stream 4: Sports / Cricket -->
+                            <div class="stream-content" id="stream-sports">
+                                <div class="stream-stat-row">
+                                    <div class="stream-stat-box">
+                                        <span class="stat-lbl">Role</span>
+                                        <span class="stat-val text-amber">All-Rounder</span>
+                                    </div>
+                                    <div class="stream-stat-box">
+                                        <span class="stat-lbl">Discipline</span>
+                                        <span class="stat-val">Strategy & Speed</span>
+                                    </div>
+                                </div>
+                                <div class="stream-desc">
+                                    Approaching distributed engineering with an athletic mindset: split-second decision making, resilience under pressure, and tight team communication.
+                                </div>
+                                <button class="stream-action-btn" id="btn-cricket-pulse" type="button">
+                                    <span class="btn-icon">🏏</span>
+                                    <span>Trigger Team Rally Pulse</span>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- SELECTED PROJECTS (PORTFOLIO SAMPLES) -->
+        <!-- SELECTED PROJECTS -->
         <section id="work" class="showcase-section">
             <div class="section-header-centered">
-                <span class="section-tag-pill">Selected Projects</span>
-                <h2 class="section-display-title">Portfolio Samples</h2>
+                <span class="section-tag-pill">Featured Engineering</span>
+                <h2 class="section-display-title">Projects</h2>
+                <p class="section-subtext">Real-world systems spanning serverless AWS pipelines, machine learning security, and containerized architectures.</p>
             </div>
 
-            <div class="showcase-bento-grid">
+            <div class="projects-grid">
                 
-                <!-- BENTO ROW 1 -->
-                <div class="bento-row">
-                    <!-- Featured Large Project (Left) -->
-                    <article class="bento-card card-large">
-                        <div class="card-media-wrapper">
-                            <video class="card-video" autoplay muted loop playsinline preload="metadata" poster="/gallery/image-1.webp">
-                                <source src="/assets/imagine-redux-CthsR9LM.mp4" type="video/mp4">
-                            </video>
-                            <div class="media-overlay-gradient"></div>
+                <!-- Project 1: Smart City Civic & AI Complaint System -->
+                <article class="project-card">
+                    <div class="project-media-wrapper">
+                        <img src="/images/project-smart-city.jpg" alt="Smart City Civic & AI Complaint System" class="project-thumbnail" loading="lazy">
+                        <div class="project-media-gradient"></div>
+                        <div class="project-floating-badge">
+                            <span class="shield-badge badge-blue">
+                                <span class="shield-lbl">latency</span>
+                                <span class="shield-val">&lt;50ms</span>
+                            </span>
                         </div>
-                        <div class="card-body">
-                            <a href="https://github.com/hemanshusuryawanshi" target="_blank" rel="noopener noreferrer" class="card-title-link">
-                                <h3 class="card-title">Digital Intelligence Consultant</h3>
-                                <svg class="arrow-diagonal" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-                            </a>
-                            <p class="card-description">
-                                A full-stack RAG-powered intelligent system that answers complex enterprise queries with semantic vector retrieval and sub-50ms inference.
-                            </p>
-                            <div class="card-meta-row">
-                                <span class="shield-badge badge-blue">
-                                    <span class="shield-lbl">vectors</span>
-                                    <span class="shield-val">107</span>
-                                </span>
-                                <div class="tech-icons-group">
-                                    <img src="/images/next.svg" alt="Next.js" title="Next.js" class="tech-icon" loading="lazy">
-                                    <img src="/images/ts.svg" alt="TypeScript" title="TypeScript" class="tech-icon" loading="lazy">
-                                    <img src="/images/openAI.svg" alt="OpenAI" title="OpenAI" class="tech-icon" loading="lazy">
-                                    <img src="/images/aws.svg" alt="AWS" title="AWS" class="tech-icon" loading="lazy">
-                                    <img src="/images/python.svg" alt="Python" title="Python" class="tech-icon" loading="lazy">
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Stacked Right Projects -->
-                    <div class="bento-stacked-col">
-                        <!-- Project 2: Lanner Neon Halo -->
-                        <article class="bento-card card-medium neon-halo-card">
-                            <div class="card-media-wrapper halo-media">
-                                <img src="/images/lanner.svg" alt="Lanner Interactive" class="card-graphic-img neon-glow-img" loading="lazy">
-                            </div>
-                            <div class="card-body">
-                                <a href="https://github.com/hemanshusuryawanshi" target="_blank" rel="noopener noreferrer" class="card-title-link">
-                                    <h3 class="card-title">Lanner: Interactive Experience</h3>
-                                    <svg class="arrow-diagonal" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-                                </a>
-                                <div class="card-meta-row">
-                                    <span class="shield-badge badge-blue">
-                                        <span class="shield-lbl">IG growth</span>
-                                        <span class="shield-val">+5k</span>
-                                    </span>
-                                    <div class="tech-icons-group">
-                                        <img src="/images/next.svg" alt="Next.js" title="Next.js" class="tech-icon" loading="lazy">
-                                        <img src="/images/tail.svg" alt="TailwindCSS" title="TailwindCSS" class="tech-icon" loading="lazy">
-                                        <img src="/images/ts.svg" alt="TypeScript" title="TypeScript" class="tech-icon" loading="lazy">
-                                        <img src="/images/fm.svg" alt="Framer Motion" title="Framer Motion" class="tech-icon" loading="lazy">
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
-
-                        <!-- Project 3: Financial Virtuosity Gradient Card -->
-                        <article class="bento-card card-medium gradient-blue-card">
-                            <div class="card-media-wrapper gradient-media">
-                                <img src="/images/tableau.png" alt="Data Virtuosity Analysis" class="card-graphic-img" loading="lazy">
-                            </div>
-                            <div class="card-body">
-                                <a href="https://github.com/hemanshusuryawanshi" target="_blank" rel="noopener noreferrer" class="card-title-link">
-                                    <h3 class="card-title">Financial Virtuosity Analytics</h3>
-                                    <svg class="arrow-diagonal" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-                                </a>
-                                <div class="card-meta-row">
-                                    <span class="shield-badge badge-blue">
-                                        <span class="shield-lbl">views</span>
-                                        <span class="shield-val">7.3k</span>
-                                    </span>
-                                    <div class="tech-icons-group">
-                                        <img src="/images/python.svg" alt="Python" title="Python" class="tech-icon" loading="lazy">
-                                        <img src="/images/pytest.svg" alt="PyTest" title="PyTest" class="tech-icon" loading="lazy">
-                                        <img src="/images/tableau.svg" alt="Tableau" title="Tableau" class="tech-icon" loading="lazy">
-                                        <img src="/images/SQLite.svg" alt="SQLite" title="SQLite" class="tech-icon" loading="lazy">
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
                     </div>
-                </div>
-
-                <!-- BENTO ROW 2 -->
-                <div class="bento-row">
-                    <!-- Project 4: G20 Policy Engine (Large Left) -->
-                    <article class="bento-card card-large">
-                        <div class="card-media-wrapper">
-                            <img src="/images/g20.png" alt="G20 Tax Analysis System" class="card-photo-img" loading="lazy">
-                            <div class="media-overlay-gradient"></div>
+                    <div class="project-body">
+                        <div class="project-domain-pill">Event-Driven Civic AI</div>
+                        <a href="https://github.com/hemanshusuryawanshi" target="_blank" rel="noopener noreferrer" class="project-title-link">
+                            <h3 class="project-title">Smart City Civic & AI Complaint System</h3>
+                            <svg class="arrow-diagonal" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                        </a>
+                        <p class="project-description">
+                            Architected an event-driven civic complaint system combining relational (RDS PostgreSQL) and NoSQL (DynamoDB) storage with automated image verification powered by AWS Rekognition and EventBridge.
+                        </p>
+                        <div class="project-tech-row">
+                            <img src="/images/aws.svg" alt="AWS" title="AWS Lambda & EventBridge" class="project-tech-icon" loading="lazy">
+                            <img src="/images/python.svg" alt="Python" title="Python Backend" class="project-tech-icon" loading="lazy">
+                            <img src="/images/postgres.svg" alt="PostgreSQL" title="RDS PostgreSQL" class="project-tech-icon" loading="lazy">
+                            <img src="/images/MongoDB.svg" alt="DynamoDB" title="DynamoDB NoSQL" class="project-tech-icon" loading="lazy">
+                            <img src="/images/docker.svg" alt="Docker" title="Docker Containerization" class="project-tech-icon" loading="lazy">
                         </div>
-                        <div class="card-body">
-                            <a href="https://github.com/hemanshusuryawanshi" target="_blank" rel="noopener noreferrer" class="card-title-link">
-                                <h3 class="card-title">Autonomous Economic Intelligence</h3>
-                                <svg class="arrow-diagonal" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                        <div class="project-actions">
+                            <a href="https://github.com/hemanshusuryawanshi" target="_blank" rel="noopener noreferrer" class="btn-live-demo">
+                                <span>Live System ↗</span>
                             </a>
-                            <p class="card-description">
-                                A high-throughput RAG engine synthesizing international financial treaties and policy documents for real-time compliance validation.
-                            </p>
-                            <div class="card-meta-row">
-                                <span class="shield-badge badge-blue">
-                                    <span class="shield-lbl">vectors</span>
-                                    <span class="shield-val">60</span>
-                                </span>
-                                <div class="tech-icons-group">
-                                    <img src="/images/next.svg" alt="Next.js" title="Next.js" class="tech-icon" loading="lazy">
-                                    <img src="/images/ts.svg" alt="TypeScript" title="TypeScript" class="tech-icon" loading="lazy">
-                                    <img src="/images/openAI.svg" alt="OpenAI" title="OpenAI" class="tech-icon" loading="lazy">
-                                    <img src="/images/cohere.svg" alt="Cohere" title="Cohere" class="tech-icon" loading="lazy">
-                                </div>
-                            </div>
+                            <a href="https://github.com/hemanshusuryawanshi" target="_blank" rel="noopener noreferrer" class="btn-github">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                                <span>GitHub Repo</span>
+                            </a>
                         </div>
-                    </article>
-
-                    <!-- Stacked Right Projects Row 2 -->
-                    <div class="bento-stacked-col">
-                        <!-- Project 5: PropGuru Platform -->
-                        <article class="bento-card card-medium">
-                            <div class="card-media-wrapper">
-                                <video class="card-video" autoplay muted loop playsinline preload="metadata">
-                                    <source src="/assets/propcard-compressed-BN0QPArA.mp4" type="video/mp4">
-                                </video>
-                            </div>
-                            <div class="card-body">
-                                <a href="https://github.com/hemanshusuryawanshi" target="_blank" rel="noopener noreferrer" class="card-title-link">
-                                    <h3 class="card-title">PropGuru: Property Intelligence</h3>
-                                    <svg class="arrow-diagonal" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-                                </a>
-                                <div class="card-meta-row">
-                                    <span class="shield-badge badge-blue">
-                                        <span class="shield-lbl">downloads</span>
-                                        <span class="shield-val">40k</span>
-                                    </span>
-                                    <div class="tech-icons-group">
-                                        <img src="/images/vite.svg" alt="Vite" title="Vite" class="tech-icon" loading="lazy">
-                                        <img src="/images/node.svg" alt="Node.js" title="Node.js" class="tech-icon" loading="lazy">
-                                        <img src="/images/ts.svg" alt="TypeScript" title="TypeScript" class="tech-icon" loading="lazy">
-                                        <img src="/images/npm.svg" alt="npm" title="npm" class="tech-icon" loading="lazy">
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
-
-                        <!-- Project 6: Cloud Distributed Architecture -->
-                        <article class="bento-card card-medium">
-                            <div class="card-media-wrapper">
-                                <video class="card-video" autoplay muted loop playsinline preload="metadata">
-                                    <source src="/assets/neu-trimmed-BusknyAv.mp4" type="video/mp4">
-                                </video>
-                            </div>
-                            <div class="card-body">
-                                <a href="https://github.com/hemanshusuryawanshi" target="_blank" rel="noopener noreferrer" class="card-title-link">
-                                    <h3 class="card-title">Distributed Cloud Architecture</h3>
-                                    <svg class="arrow-diagonal" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-                                </a>
-                                <div class="card-meta-row">
-                                    <span class="shield-badge badge-blue">
-                                        <span class="shield-lbl">uptime</span>
-                                        <span class="shield-val">99.9%</span>
-                                    </span>
-                                    <div class="tech-icons-group">
-                                        <img src="/images/python.svg" alt="Python" title="Python" class="tech-icon" loading="lazy">
-                                        <img src="/images/aws.svg" alt="AWS" title="AWS" class="tech-icon" loading="lazy">
-                                        <img src="/images/MongoDB.svg" alt="MongoDB" title="MongoDB" class="tech-icon" loading="lazy">
-                                        <img src="/images/re.svg" alt="React" title="React" class="tech-icon" loading="lazy">
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
                     </div>
-                </div>
+                </article>
+
+                <!-- Project 2: CyberGuard Real-Time ML Security -->
+                <article class="project-card">
+                    <div class="project-media-wrapper">
+                        <img src="/images/project-cyberguard.jpg" alt="CyberGuard Real-Time ML Security" class="project-thumbnail" loading="lazy">
+                        <div class="project-media-gradient"></div>
+                        <div class="project-floating-badge">
+                            <span class="shield-badge badge-blue">
+                                <span class="shield-lbl">accuracy</span>
+                                <span class="shield-val">98.4%</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-domain-pill">Machine Learning Security</div>
+                        <a href="https://github.com/hemanshusuryawanshi/CyberGuard" target="_blank" rel="noopener noreferrer" class="project-title-link">
+                            <h3 class="project-title">CyberGuard: Real-Time ML Security</h3>
+                            <svg class="arrow-diagonal" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                        </a>
+                        <p class="project-description">
+                            Real-time malicious URL detection powered by a Random Forest classifier served through a high-throughput FastAPI backend with Chrome/Edge extension integration and Streamlit analytics.
+                        </p>
+                        <div class="project-tech-row">
+                            <img src="/images/python.svg" alt="Python" title="Python 3" class="project-tech-icon" loading="lazy">
+                            <img src="/images/fastapi.svg" alt="FastAPI" title="FastAPI High-Speed Server" class="project-tech-icon" loading="lazy">
+                            <img src="/images/streamlit.svg" alt="Streamlit" title="Streamlit Analytics" class="project-tech-icon" loading="lazy">
+                            <img src="/images/pytest.svg" alt="PyTest" title="PyTest Suite" class="project-tech-icon" loading="lazy">
+                            <img src="/images/docker.svg" alt="Docker" title="Docker Container" class="project-tech-icon" loading="lazy">
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/hemanshusuryawanshi/CyberGuard#readme" target="_blank" rel="noopener noreferrer" class="btn-live-demo">
+                                <span>Live Demo ↗</span>
+                            </a>
+                            <a href="https://github.com/hemanshusuryawanshi/CyberGuard" target="_blank" rel="noopener noreferrer" class="btn-github">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                                <span>GitHub Repo</span>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 3: Serverless Event-Driven Image Resizer -->
+                <article class="project-card">
+                    <div class="project-media-wrapper">
+                        <img src="/images/project-image-resizer.jpg" alt="Serverless Event-Driven Image Resizer" class="project-thumbnail" loading="lazy">
+                        <div class="project-media-gradient"></div>
+                        <div class="project-floating-badge">
+                            <span class="shield-badge badge-blue">
+                                <span class="shield-lbl">views</span>
+                                <span class="shield-val">7.3k</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-domain-pill">AWS Serverless Architecture</div>
+                        <a href="http://image-resizer-site-hemanshu2026.s3-website.ap-south-1.amazonaws.com/" target="_blank" rel="noopener noreferrer" class="project-title-link">
+                            <h3 class="project-title">Serverless Event-Driven Image Resizer</h3>
+                            <svg class="arrow-diagonal" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                        </a>
+                        <p class="project-description">
+                            Automated event-driven media processing pipeline on AWS S3 & Lambda, instantly generating responsive web-optimized thumbnails with real-time CloudWatch metrics and alarms.
+                        </p>
+                        <div class="project-tech-row">
+                            <img src="/images/python.svg" alt="Python" title="Python Lambda Handler" class="project-tech-icon" loading="lazy">
+                            <img src="/images/aws.svg" alt="AWS" title="AWS S3 & Lambda" class="project-tech-icon" loading="lazy">
+                            <img src="/images/cloud.svg" alt="CloudWatch" title="CloudWatch Metrics" class="project-tech-icon" loading="lazy">
+                            <img src="/images/git.svg" alt="GitHub" title="Source Control" class="project-tech-icon" loading="lazy">
+                        </div>
+                        <div class="project-actions">
+                            <a href="http://image-resizer-site-hemanshu2026.s3-website.ap-south-1.amazonaws.com/" target="_blank" rel="noopener noreferrer" class="btn-live-demo">
+                                <span>Live AWS S3 App ↗</span>
+                            </a>
+                            <a href="https://github.com/hemanshusuryawanshi" target="_blank" rel="noopener noreferrer" class="btn-github">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                                <span>GitHub Repo</span>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 4: Task Manager - AWS ECS & Fargate -->
+                <article class="project-card">
+                    <div class="project-media-wrapper">
+                        <img src="/images/project-task-manager.jpg" alt="Task Manager: AWS ECS & Fargate" class="project-thumbnail" loading="lazy">
+                        <div class="project-media-gradient"></div>
+                        <div class="project-floating-badge">
+                            <span class="shield-badge badge-blue">
+                                <span class="shield-lbl">uptime</span>
+                                <span class="shield-val">99.9%</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-domain-pill">Containerized Cloud Platform</div>
+                        <a href="https://hemanshusuryawanshi.github.io/task-manager-ecs/" target="_blank" rel="noopener noreferrer" class="project-title-link">
+                            <h3 class="project-title">Task Manager: AWS ECS & Fargate Cloud</h3>
+                            <svg class="arrow-diagonal" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                        </a>
+                        <p class="project-description">
+                            A high-availability agile sprint management system deployed on AWS using fully containerized serverless ECS Fargate infrastructure, Docker, and GitHub Actions CI/CD.
+                        </p>
+                        <div class="project-tech-row">
+                            <img src="/images/docker.svg" alt="Docker" title="Docker Container" class="project-tech-icon" loading="lazy">
+                            <img src="/images/aws.svg" alt="AWS ECS" title="AWS ECS Fargate" class="project-tech-icon" loading="lazy">
+                            <img src="/images/node.svg" alt="Node.js" title="Node.js Runtime" class="project-tech-icon" loading="lazy">
+                            <img src="/images/git.svg" alt="GitHub Actions" title="CI/CD Pipeline" class="project-tech-icon" loading="lazy">
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://hemanshusuryawanshi.github.io/task-manager-ecs/" target="_blank" rel="noopener noreferrer" class="btn-live-demo">
+                                <span>Live App ↗</span>
+                            </a>
+                            <a href="https://github.com/hemanshusuryawanshi/task-manager-ecs" target="_blank" rel="noopener noreferrer" class="btn-github">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                                <span>GitHub Repo</span>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 5: Bus Booking Application -->
+                <article class="project-card">
+                    <div class="project-media-wrapper">
+                        <img src="/images/project-bus-booking.jpg" alt="Bus Booking Application" class="project-thumbnail" loading="lazy">
+                        <div class="project-media-gradient"></div>
+                        <div class="project-floating-badge">
+                            <span class="shield-badge badge-blue">
+                                <span class="shield-lbl">deploy</span>
+                                <span class="shield-val">AWS EC2</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-domain-pill">Scalable Distributed Web App</div>
+                        <a href="https://hemanshusuryawanshi.github.io/bus-booking-app/" target="_blank" rel="noopener noreferrer" class="project-title-link">
+                            <h3 class="project-title">Bus Booking: EC2 & RDS Infrastructure</h3>
+                            <svg class="arrow-diagonal" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                        </a>
+                        <p class="project-description">
+                            Full-stack online seat reservation & booking platform deployed on scalable Amazon EC2 compute instances, Application Load Balancers, and RDS MySQL relational storage.
+                        </p>
+                        <div class="project-tech-row">
+                            <img src="/images/aws.svg" alt="AWS EC2" title="AWS EC2 & RDS" class="project-tech-icon" loading="lazy">
+                            <img src="/images/python.svg" alt="Python" title="Flask Backend" class="project-tech-icon" loading="lazy">
+                            <img src="/images/SQLite.svg" alt="RDS MySQL" title="Relational Database" class="project-tech-icon" loading="lazy">
+                            <img src="/images/code.svg" alt="REST API" title="REST API" class="project-tech-icon" loading="lazy">
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://hemanshusuryawanshi.github.io/bus-booking-app/" target="_blank" rel="noopener noreferrer" class="btn-live-demo">
+                                <span>Live Demo ↗</span>
+                            </a>
+                            <a href="https://github.com/hemanshusuryawanshi/bus-booking-app" target="_blank" rel="noopener noreferrer" class="btn-github">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                                <span>GitHub Repo</span>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 6: NOVA Assistant v3 -->
+                <article class="project-card">
+                    <div class="project-media-wrapper">
+                        <img src="/images/project-nova-ai.jpg" alt="NOVA Assistant v3" class="project-thumbnail" loading="lazy">
+                        <div class="project-media-gradient"></div>
+                        <div class="project-floating-badge">
+                            <span class="shield-badge badge-blue">
+                                <span class="shield-lbl">features</span>
+                                <span class="shield-val">43+</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-domain-pill">Neural AI & OS Automation</div>
+                        <a href="https://github.com/hemanshusuryawanshi" target="_blank" rel="noopener noreferrer" class="project-title-link">
+                            <h3 class="project-title">NOVA Assistant v3: Desktop AI Companion</h3>
+                            <svg class="arrow-diagonal" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                        </a>
+                        <p class="project-description">
+                            Multimodal desktop AI companion combining neural speech recognition, Whisper neural TTS, and local system automation hooks to manage workflows and developer environments.
+                        </p>
+                        <div class="project-tech-row">
+                            <img src="/images/python.svg" alt="Python" title="Python 3.11" class="project-tech-icon" loading="lazy">
+                            <img src="/images/openAI.svg" alt="AI Engine" title="Neural Speech & LLM" class="project-tech-icon" loading="lazy">
+                            <img src="/images/cloud.svg" alt="Whisper TTS" title="Whisper Neural TTS" class="project-tech-icon" loading="lazy">
+                            <img src="/images/code.svg" alt="Automation" title="OS System Automation" class="project-tech-icon" loading="lazy">
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/hemanshusuryawanshi" target="_blank" rel="noopener noreferrer" class="btn-live-demo">
+                                <span>Overview ↗</span>
+                            </a>
+                            <a href="https://github.com/hemanshusuryawanshi" target="_blank" rel="noopener noreferrer" class="btn-github">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                                <span>GitHub Repo</span>
+                            </a>
+                        </div>
+                    </div>
+                </article>
 
             </div>
         </section>
 
-        <!-- PROFESSIONAL WORK EXPERIENCE SECTION -->
-        <section id="experience" class="experience-section">
+        <!-- ACADEMIC JOURNEY & EDUCATIONAL FOUNDATIONS (Bryan Garage Interactive Timeline) -->
+        <section id="education" class="experience-section">
             <div class="section-header-centered">
-                <span class="section-tag-pill">Career Overview</span>
-                <h2 class="section-display-title">Professional Work Experience</h2>
+                <span class="section-tag-pill">Academic Journey</span>
+                <h2 class="section-display-title">Educational Milestones & Specializations</h2>
+                <p class="section-subtext">Interactive timeline inspired by bryangarage.dev — drag horizontally or click any milestone to inspect my technical foundations from 2021 through 2027.</p>
             </div>
 
-            <div class="timeline-container">
+            <div class="garage-timeline-wrapper">
                 
-                <!-- Experience Item 1: GoingClear -->
-                <div class="timeline-card">
-                    <div class="timeline-badge">
-                        <img src="/images/gc-logo.svg" alt="GoingClear Logo" class="company-logo">
+                <!-- Controls Bar -->
+                <div class="tl-controls-bar">
+                    <div class="tl-controls-left">
+                        <span class="tl-drag-hint">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 7l4-4 4 4M8 17l4 4 4-4M7 8l-4 4 4 4M17 8l4 4-4 4"/></svg>
+                            Drag horizontally or mouse wheel to scroll timeline
+                        </span>
+                        <span class="tl-now-pill">
+                            <span class="pulse-dot"></span>
+                            Late 2026 • Present
+                        </span>
                     </div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <div>
-                                <h3 class="timeline-role">AI & Full-Stack Systems Engineer</h3>
-                                <p class="timeline-company">GoingClear • Boston, MA (Remote)</p>
-                            </div>
-                            <span class="timeline-date-badge">📅 July 2024 — Present</span>
-                        </div>
-                        <ul class="timeline-bullets">
-                            <li>Architected and delivered mission-critical web applications and AI workflows for enterprise clients.</li>
-                            <li>Engineered REST & GraphQL APIs managing high-volume catalogs with sub-60ms database response times.</li>
-                            <li>Implemented automated CI/CD deployment pipelines on AWS with zero-downtime rolling releases.</li>
-                            <li>Collaborated with design engineering teams to create micro-interaction systems adhering to strict WebGL 60 FPS standards.</li>
-                        </ul>
+                    <div class="tl-controls-right">
+                        <button class="tl-nav-btn" id="tl-prev-btn" type="button" aria-label="Scroll timeline back">‹ Prev</button>
+                        <button class="tl-nav-btn" id="tl-next-btn" type="button" aria-label="Scroll timeline forward">Next ›</button>
                     </div>
                 </div>
 
-                <!-- Experience Item 2: LogRocket -->
-                <div class="timeline-card">
-                    <div class="timeline-badge badge-purple">
-                        <img src="/images/logrocket-logo.png" alt="LogRocket Logo" class="company-logo">
-                    </div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <div>
-                                <h3 class="timeline-role">Content Advisory Board Member & Tech Specialist</h3>
-                                <p class="timeline-company">LogRocket • Engineering Community</p>
-                            </div>
-                            <span class="timeline-date-badge">📅 June 2024 — Dec 2025</span>
+                <!-- Horizontal Drag & Scroll Stage -->
+                <div class="tl-scroll" id="tl-scroll-container">
+                    <div class="tl-track" id="tl-track">
+                        
+                        <!-- Top Year Axis -->
+                        <div class="tl-axis">
+                            <div class="tl-tick" style="left: 60px;">2021</div>
+                            <div class="tl-tick" style="left: 280px;">2022</div>
+                            <div class="tl-tick" style="left: 500px;">2023</div>
+                            <div class="tl-tick" style="left: 720px;">2024</div>
+                            <div class="tl-tick" style="left: 940px;">2025</div>
+                            <div class="tl-tick" style="left: 1160px;">2026</div>
+                            <div class="tl-tick" style="left: 1380px;">2027</div>
                         </div>
-                        <ul class="timeline-bullets">
-                            <li>Reviewed and refined deep-dive software engineering architectures, WebGL rendering optimizations, and distributed AI agent patterns.</li>
-                            <li>Guided editorial and engineering standards across frontend telemetry, state management, and full-stack performance tuning.</li>
-                            <li>Authored technical solutions covering modern web frameworks and developer tooling read by thousands of engineering practitioners.</li>
-                        </ul>
-                    </div>
-                </div>
 
-                <!-- Experience Item 3: PropGuru -->
-                <div class="timeline-card">
-                    <div class="timeline-badge badge-dark">
-                        <img src="/images/propguru.svg" alt="PropGuru Logo" class="company-logo">
-                    </div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <div>
-                                <h3 class="timeline-role">Customer Support & Systems Integration Engineer</h3>
-                                <p class="timeline-company">PropGuru • Platform Engineering</p>
+                        <!-- Vertical Grid Lines -->
+                        <div class="tl-grid-line" style="left: 60px;"></div>
+                        <div class="tl-grid-line" style="left: 280px;"></div>
+                        <div class="tl-grid-line" style="left: 500px;"></div>
+                        <div class="tl-grid-line" style="left: 720px;"></div>
+                        <div class="tl-grid-line" style="left: 940px;"></div>
+                        <div class="tl-grid-line" style="left: 1160px;"></div>
+                        <div class="tl-grid-line" style="left: 1380px;"></div>
+
+                        <!-- Vertical Glowing Current Date / Now Line -->
+                        <div class="tl-now-line"></div>
+                        <div class="tl-now-indicator">Now (2026)</div>
+
+                        <!-- 1. Primary Umbrella Bar: B.Tech AIML (2023-27) -->
+                        <div class="tl-umbrella-bar" data-milestone="btech-aiml">
+                            <div class="tl-umbrella-left">
+                                <span class="tl-umbrella-icon">🎓</span>
+                                <div>
+                                    <span class="tl-umbrella-title">B.Tech in Artificial Intelligence & Machine Learning</span>
+                                    <span class="tl-umbrella-dates">(2023–27)</span>
+                                </div>
                             </div>
-                            <span class="timeline-date-badge">📅 January 2023 — May 2024</span>
+                            <div class="tl-umbrella-right">
+                                <span class="tl-sub-pill">R.C. Patel / SCSIT</span>
+                                <span class="tl-chev-wave" aria-hidden="true">&gt;&gt;</span>
+                            </div>
+                            <div class="tl-bar-hover-badge">
+                                <svg class="tl-pointer-arrow" width="13" height="13" viewBox="0 0 24 24"><path d="M4 2l16 11-7.5 1.5-3.5 7.5L4 2z" fill="#f97316"/></svg>
+                                <span>View work ↗</span>
+                            </div>
                         </div>
-                        <ul class="timeline-bullets">
-                            <li>Streamlined onboarding workflows and multi-client CMS API integrations across property data pipelines.</li>
-                            <li>Conducted technical telemetry investigations, pinpointing database bottlenecks and reducing API latency by 35%.</li>
-                            <li>Authored documentation and client-facing integration guides for custom Webhook and REST endpoints.</li>
-                        </ul>
+
+                        <!-- 2. Milestone Box: AWS with Python (2024-25) -->
+                        <div class="tl-bar" data-milestone="aws-python" style="left: 740px; top: 345px; width: 280px;">
+                            <div class="tl-bar-inner">
+                                <span class="tl-bar-logo-wrap">
+                                    <img src="/images/aws.svg" alt="AWS" class="tl-bar-logo-img">
+                                </span>
+                                <strong class="tl-bar-title">Cloud Systems</strong>
+                                <span class="tl-bar-inst">Symbiosis</span>
+                            </div>
+                            <div class="tl-bar-hover-badge">
+                                <svg class="tl-pointer-arrow" width="13" height="13" viewBox="0 0 24 24"><path d="M4 2l16 11-7.5 1.5-3.5 7.5L4 2z" fill="#f97316"/></svg>
+                                <span>View work ↗</span>
+                            </div>
+                        </div>
+
+                        <!-- 3. Milestone Box: Fetch.ai Club Media Head (2024-Present) -->
+                        <div class="tl-bar" data-milestone="fetch-ai" style="left: 690px; top: 405px; width: 320px;">
+                            <div class="tl-bar-inner">
+                                <span class="tl-bar-logo-wrap tl-logo-amber">
+                                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                </span>
+                                <strong class="tl-bar-title">Media & Design Head</strong>
+                                <span class="tl-bar-inst">Fetch.ai</span>
+                            </div>
+                            <div class="tl-bar-hover-badge">
+                                <svg class="tl-pointer-arrow" width="13" height="13" viewBox="0 0 24 24"><path d="M4 2l16 11-7.5 1.5-3.5 7.5L4 2z" fill="#f97316"/></svg>
+                                <span>View work ↗</span>
+                            </div>
+                        </div>
+
+                        <!-- 4. Milestone Box: Java Enterprise Training (2025) -->
+                        <div class="tl-bar" data-milestone="r3sys-java" style="left: 1080px; top: 345px; width: 240px;">
+                            <div class="tl-bar-inner">
+                                <span class="tl-bar-logo-wrap">
+                                    <span class="tl-bar-emoji">☕</span>
+                                </span>
+                                <strong class="tl-bar-title">Enterprise Java</strong>
+                                <span class="tl-bar-inst">R3Sys</span>
+                            </div>
+                            <div class="tl-bar-hover-badge">
+                                <svg class="tl-pointer-arrow" width="13" height="13" viewBox="0 0 24 24"><path d="M4 2l16 11-7.5 1.5-3.5 7.5L4 2z" fill="#f97316"/></svg>
+                                <span>View work ↗</span>
+                            </div>
+                        </div>
+
+                        <!-- 5. Milestone Box: HSC Science (2022-23) -->
+                        <div class="tl-bar" data-milestone="hsc-science" style="left: 280px; top: 220px; width: 230px;">
+                            <div class="tl-bar-inner">
+                                <span class="tl-bar-logo-wrap">
+                                    <span class="tl-bar-emoji">📚</span>
+                                </span>
+                                <strong class="tl-bar-title">HSC Science</strong>
+                                <span class="tl-bar-inst">Pratap College</span>
+                            </div>
+                            <div class="tl-bar-hover-badge">
+                                <svg class="tl-pointer-arrow" width="13" height="13" viewBox="0 0 24 24"><path d="M4 2l16 11-7.5 1.5-3.5 7.5L4 2z" fill="#f97316"/></svg>
+                                <span>View work ↗</span>
+                            </div>
+                        </div>
+
+                        <!-- 6. Milestone Box: SSC 10th (2021) -->
+                        <div class="tl-bar" data-milestone="ssc-board" style="left: 60px; top: 280px; width: 200px;">
+                            <div class="tl-bar-inner">
+                                <span class="tl-bar-logo-wrap">
+                                    <span class="tl-bar-emoji">🏫</span>
+                                </span>
+                                <strong class="tl-bar-title">SSC Distinction</strong>
+                                <span class="tl-bar-inst">MSBSHSE</span>
+                            </div>
+                            <div class="tl-bar-hover-badge">
+                                <svg class="tl-pointer-arrow" width="13" height="13" viewBox="0 0 24 24"><path d="M4 2l16 11-7.5 1.5-3.5 7.5L4 2z" fill="#f97316"/></svg>
+                                <span>View work ↗</span>
+                            </div>
+                        </div>
+
+                        <!-- 7. Interactive Hatched Foundation Strip (Screenshots 1 & 2 Style) -->
+                        <div class="tl-foundation-bar" data-milestone="foundation" style="top: 480px;">
+                            <div class="tl-foundation-inner">
+                                <strong class="tl-foundation-title">Multidisciplinary design work</strong>
+                                <span class="tl-foundation-sub">front-end · graphics · motion · cloud architectures</span>
+                            </div>
+                            <div class="tl-bar-hover-badge">
+                                <svg class="tl-pointer-arrow" width="13" height="13" viewBox="0 0 24 24"><path d="M4 2l16 11-7.5 1.5-3.5 7.5L4 2z" fill="#f97316"/></svg>
+                                <span>View work ↗</span>
+                            </div>
+                        </div>
+
+                        <!-- Floating Popover Card -->
+                        <div class="tl-floating-popover" id="tl-floating-popover"></div>
+
                     </div>
                 </div>
 
             </div>
         </section>
 
-        <!-- CONTACT & FOOTER SECTION -->
+        <!-- PHOTOGRAPHY & VISUAL EXPLORATIONS (Bryan Garage Filmstrip & Halftone "Hover to Develop") -->
+        <section id="gallery" class="gallery-section">
+            <div class="section-header-centered">
+                <span class="section-tag-pill">Visual Explorations</span>
+                <h2 class="section-display-title">Photography & Frames</h2>
+                <p class="section-subtext">Capturing light, urban rhythm, and atmospheric geometry. Hover over any frame to develop it into full color.</p>
+            </div>
+
+            <div class="ps-sheet">
+                <div class="ps-clip">
+                    <div class="ps-track" id="ps-track">
+                        <!-- Frame 1: Morro Bay Fruit Market (Screenshot 3 Reference) -->
+                        <div class="ps-frame" data-index="1">
+                            <div class="ps-frame-view">
+                                <img src="/gallery/image-2.webp" alt="Morro Bay Harvest Market" class="ps-img" loading="lazy">
+                                <canvas class="ps-canvas"></canvas>
+                                <div class="ps-badge"><span class="ps-badge-dot"></span></div>
+                            </div>
+                            <div class="ps-frame-meta">
+                                <span class="ps-meta-loc">Morro Bay</span>
+                                <span class="ps-meta-code">03A</span>
+                                <span class="ps-meta-coords">37°17'N 121°57'W · 10:30</span>
+                            </div>
+                        </div>
+
+                        <!-- Frame 2: Studio Polaroid Prints (Screenshot 4 Reference) -->
+                        <div class="ps-frame" data-index="2">
+                            <div class="ps-frame-view">
+                                <img src="/gallery/image-3.webp" alt="Studio Negative Prints" class="ps-img" loading="lazy">
+                                <canvas class="ps-canvas"></canvas>
+                                <div class="ps-badge"><span class="ps-badge-dot"></span></div>
+                            </div>
+                            <div class="ps-frame-meta">
+                                <span class="ps-meta-loc">Studio Frames</span>
+                                <span class="ps-meta-code">04A</span>
+                                <span class="ps-meta-coords">37°15'N 121°57'W · 16:45</span>
+                            </div>
+                        </div>
+
+                        <!-- Frame 3: Urban Geometry -->
+                        <div class="ps-frame" data-index="3">
+                            <div class="ps-frame-view">
+                                <img src="/gallery/image-4.webp" alt="Urban Architectural Geometry" class="ps-img" loading="lazy">
+                                <canvas class="ps-canvas"></canvas>
+                                <div class="ps-badge"><span class="ps-badge-dot"></span></div>
+                            </div>
+                            <div class="ps-frame-meta">
+                                <span class="ps-meta-loc">Urban Geometry</span>
+                                <span class="ps-meta-code">05A</span>
+                                <span class="ps-meta-coords">37°20'N 122°01'W · 12:15</span>
+                            </div>
+                        </div>
+
+                        <!-- Frame 4: Pacific Coastline -->
+                        <div class="ps-frame" data-index="4">
+                            <div class="ps-frame-view">
+                                <img src="/gallery/image-5.webp" alt="Pacific Coastal Line" class="ps-img" loading="lazy">
+                                <canvas class="ps-canvas"></canvas>
+                                <div class="ps-badge"><span class="ps-badge-dot"></span></div>
+                            </div>
+                            <div class="ps-frame-meta">
+                                <span class="ps-meta-loc">Pacific Coast</span>
+                                <span class="ps-meta-code">06A</span>
+                                <span class="ps-meta-coords">36°35'N 121°54'W · 17:40</span>
+                            </div>
+                        </div>
+
+                        <!-- Frame 5: Light & Architectural Shadows -->
+                        <div class="ps-frame" data-index="5">
+                            <div class="ps-frame-view">
+                                <img src="/gallery/image-7.webp" alt="Architectural Light Shadows" class="ps-img" loading="lazy">
+                                <canvas class="ps-canvas"></canvas>
+                                <div class="ps-badge"><span class="ps-badge-dot"></span></div>
+                            </div>
+                            <div class="ps-frame-meta">
+                                <span class="ps-meta-loc">Light & Shadow</span>
+                                <span class="ps-meta-code">07A</span>
+                                <span class="ps-meta-coords">37°46'N 122°25'W · 09:20</span>
+                            </div>
+                        </div>
+
+                        <!-- Frame 6: Night Atmosphere -->
+                        <div class="ps-frame" data-index="6">
+                            <div class="ps-frame-view">
+                                <img src="/gallery/image-9.webp" alt="Night Frequency Atmosphere" class="ps-img" loading="lazy">
+                                <canvas class="ps-canvas"></canvas>
+                                <div class="ps-badge"><span class="ps-badge-dot"></span></div>
+                            </div>
+                            <div class="ps-frame-meta">
+                                <span class="ps-meta-loc">Night Pulse</span>
+                                <span class="ps-meta-code">08A</span>
+                                <span class="ps-meta-coords">37°48'N 122°24'W · 21:05</span>
+                            </div>
+                        </div>
+
+                        <!-- Frame 7: Spatial Study -->
+                        <div class="ps-frame" data-index="7">
+                            <div class="ps-frame-view">
+                                <img src="/gallery/image-11.webp" alt="Spatial Composition Study" class="ps-img" loading="lazy">
+                                <canvas class="ps-canvas"></canvas>
+                                <div class="ps-badge"><span class="ps-badge-dot"></span></div>
+                            </div>
+                            <div class="ps-frame-meta">
+                                <span class="ps-meta-loc">Spatial Study</span>
+                                <span class="ps-meta-code">09A</span>
+                                <span class="ps-meta-coords">37°19'N 121°53'W · 14:10</span>
+                            </div>
+                        </div>
+
+                        <!-- Frame 8: Golden Horizon -->
+                        <div class="ps-frame" data-index="8">
+                            <div class="ps-frame-view">
+                                <img src="/gallery/image-12.webp" alt="Golden Horizon Shore" class="ps-img" loading="lazy">
+                                <canvas class="ps-canvas"></canvas>
+                                <div class="ps-badge"><span class="ps-badge-dot"></span></div>
+                            </div>
+                            <div class="ps-frame-meta">
+                                <span class="ps-meta-loc">Golden Horizon</span>
+                                <span class="ps-meta-code">10A</span>
+                                <span class="ps-meta-coords">36°58'N 122°02'W · 18:55</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bryan Garage Signature Monospace Caption -->
+                <div class="personal-caption">
+                    <span>scroll to explore · hover to develop</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT & FOOTER SECTION: Engaging, Interactive & Entertaining -->
         <section id="contact" class="contact-section">
             <div class="contact-container">
                 <div class="section-header-centered">
-                    <span class="section-tag-pill">Have a project in mind?</span>
+                    <span class="section-tag-pill">Get in Touch</span>
                     <h2 class="section-display-title">Let's Connect! 🚀</h2>
                     <p class="contact-subtitle">
-                        I'm always open to discussing cutting-edge AI architectures, high-performance web systems, and engineering collaborations.
+                        Whether you want to build an intelligent AI system, architect cloud pipelines on AWS, or discuss photography and tech — my transmission line is open!
                     </p>
                 </div>
 
+                <!-- Engaging Interactive Topic Quick-Select Bar -->
+                <div class="contact-quick-topics">
+                    <span class="topic-bar-label">⚡ Click to pre-fill message scope:</span>
+                    <div class="topic-chips-group">
+                        <button type="button" class="topic-chip" data-topic="AI / ML System">🤖 Build AI / ML System</button>
+                        <button type="button" class="topic-chip" data-topic="AWS Cloud Architecture">☁️ AWS Cloud Architecture</button>
+                        <button type="button" class="topic-chip" data-topic="Internship / Role">💼 Role / Internship Opportunity</button>
+                        <button type="button" class="topic-chip" data-topic="Photography Project">📸 Photography Collaboration</button>
+                        <button type="button" class="topic-chip" data-topic="Tech Coffee Chat">☕ Quick Tech Coffee Chat</button>
+                    </div>
+                </div>
+
                 <div class="contact-grid">
-                    <!-- Left: Direct Info Cards -->
+                    <!-- Left: Direct Interactive Cards & Live Pune Terminal -->
                     <div class="contact-info-col">
-                        <a href="mailto:hemanshusuryawanshi007@gmail.com" class="contact-info-card" id="contact-email-card">
+                        
+                        <!-- 1-Click Copy Email Card -->
+                        <div class="contact-info-card copyable-card" id="btn-copy-email" role="button" tabindex="0" title="Click to copy email address">
                             <div class="info-icon-wrapper">
                                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
                             </div>
-                            <div>
-                                <span class="info-label">Direct Email</span>
-                                <span class="info-value">hemanshusuryawanshi007@gmail.com</span>
+                            <div class="info-text-col">
+                                <span class="info-label">Direct Email (Click to copy)</span>
+                                <span class="info-value email-val">hemanshusuryawanshi007@gmail.com</span>
                             </div>
-                        </a>
+                            <span class="copy-badge" id="copy-badge-pill">Copy 📋</span>
+                        </div>
 
+                        <!-- GitHub Profile Card -->
                         <a href="https://github.com/hemanshusuryawanshi" target="_blank" rel="noopener noreferrer" class="contact-info-card">
                             <div class="info-icon-wrapper">
                                 <img src="/images/git.svg" alt="GitHub" width="22" height="22">
                             </div>
-                            <div>
-                                <span class="info-label">GitHub Account</span>
+                            <div class="info-text-col">
+                                <span class="info-label">GitHub Repositories</span>
                                 <span class="info-value">github.com/hemanshusuryawanshi</span>
                             </div>
+                            <svg class="arrow-diagonal" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
                         </a>
 
-                        <div class="contact-info-card static-info">
+                        <!-- Live Pune Local Time Clock & Location Card -->
+                        <div class="contact-info-card static-info live-clock-card">
                             <div class="info-icon-wrapper">
-                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
                             </div>
-                            <div>
-                                <span class="info-label">Current Location</span>
-                                <span class="info-value">Pune, Maharashtra, India 🇮🇳 (18.5204° N, 73.8567° E)</span>
+                            <div class="info-text-col">
+                                <span class="info-label">Pune, India (IST • 18.52° N, 73.85° E)</span>
+                                <span class="info-value live-clock-val" id="pune-clock">Loading live time...</span>
                             </div>
                         </div>
 
+                        <!-- Availability Status Card -->
                         <div class="contact-info-card status-card">
                             <div class="status-indicator">
                                 <span class="ping-circle"></span>
                                 <span class="solid-circle"></span>
                             </div>
-                            <div>
+                            <div class="info-text-col">
                                 <span class="info-label">Availability</span>
-                                <span class="info-value text-emerald-400">Available for select roles & consulting</span>
+                                <span class="info-value text-emerald-400">Available for AI & Cloud roles & consulting</span>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Right: Quick Message Form -->
+                    <!-- Right: Engaging Direct Transmission Terminal Form -->
                     <div class="contact-form-col">
                         <form id="contact-form" class="contact-form" novalidate>
+                            <div class="form-terminal-bar">
+                                <span class="term-dot red"></span>
+                                <span class="term-dot yellow"></span>
+                                <span class="term-dot green"></span>
+                                <span class="term-title">direct_message_channel.sh</span>
+                            </div>
+
                             <div class="form-group">
                                 <label for="contact-name" class="form-label">Your Name</label>
                                 <input type="text" id="contact-name" name="name" class="form-input" placeholder="e.g. Elena Rostova" required>
@@ -482,7 +1012,7 @@
                             </div>
 
                             <button type="submit" id="contact-submit-btn" class="form-submit-btn">
-                                <span>Send Message</span>
+                                <span>Dispatch Transmission</span>
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
                             </button>
                             <p id="form-status" class="form-status-msg" aria-live="polite"></p>
@@ -494,11 +1024,11 @@
                 <footer class="site-footer">
                     <div class="footer-inner">
                         <p class="copyright-text">
-                            © 2026 Hemanshu Suryawanshi. Crafted with Three.js & Modern Web Standards.
+                            © 2026 Hemanshu Suryawanshi • Built with Three.js, GSAP & Modern Web Standards.
                         </p>
                         <div class="footer-links">
                             <a href="#hero" class="footer-link">Back to Top ↑</a>
-                            <a href="Hemanshu_Resume.pdf" download class="footer-link">Resume</a>
+                            <a href="Hemanshu_Resume.pdf" download class="footer-link">Resume PDF</a>
                             <a href="https://github.com/hemanshusuryawanshi" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub</a>
                         </div>
                     </div>
@@ -518,29 +1048,23 @@
             </div>
             <div class="cmdk-list" id="cmdk-items">
                 <div class="cmdk-group-title">Navigation</div>
-                <button class="cmdk-item" data-action="goto" data-target="#hero"><span>⚡ Hero & 3D Studio</span><kbd>H</kbd></button>
-                <button class="cmdk-item" data-action="goto" data-target="#work"><span>💼 Portfolio Samples</span><kbd>P</kbd></button>
-                <button class="cmdk-item" data-action="goto" data-target="#experience"><span>🏛️ Work Experience</span><kbd>E</kbd></button>
+                <button class="cmdk-item" data-action="goto" data-target="#hero"><span>⚡ Hero & Holographic Studio</span><kbd>H</kbd></button>
+                <button class="cmdk-item" data-action="goto" data-target="#work"><span>💼 Projects</span><kbd>P</kbd></button>
+                <button class="cmdk-item" data-action="goto" data-target="#education"><span>🎓 Educational Journey</span><kbd>E</kbd></button>
+                <button class="cmdk-item" data-action="goto" data-target="#gallery"><span>📸 Photography & Frames</span><kbd>G</kbd></button>
                 <button class="cmdk-item" data-action="goto" data-target="#contact"><span>✉️ Contact & Reach Out</span><kbd>C</kbd></button>
                 
                 <div class="cmdk-group-title">Quick Actions</div>
-                <button class="cmdk-item" data-action="toggle-audio"><span>🎵 Toggle Lo-Fi Audio</span><kbd>M</kbd></button>
+                <button class="cmdk-item" data-action="toggle-spotify"><span>🎵 Toggle Spotify Hub</span><kbd>S</kbd></button>
                 <button class="cmdk-item" data-action="download-resume"><span>📄 Download Resume PDF</span><kbd>R</kbd></button>
-                <button class="cmdk-item" data-action="copy-email"><span>📋 Copy Email Address</span><kbd>E</kbd></button>
+                <button class="cmdk-item" data-action="copy-email"><span>📋 Copy Email Address</span><kbd>C</kbd></button>
                 <button class="cmdk-item" data-action="open-github"><span>🐙 Open GitHub Profile</span><kbd>G</kbd></button>
             </div>
         </div>
     </div>
 
-    <!-- Hidden Lo-Fi Audio Element -->
-    <audio id="bg-audio" preload="auto" loop>
-        <source src="/assets/voyage-DAKl0EEC.mp3" type="audio/mpeg">
-    </audio>
-
-    <!-- Scripts: Vendor Three.js, GLTFLoader, OrbitControls & Application Logic -->
+    <!-- Scripts: Vendor Three.js & Application Logic -->
     <script src="/vendor/three.min.js"></script>
-    <script src="/vendor/GLTFLoader.js"></script>
-    <script src="/vendor/OrbitControls.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
